@@ -41,60 +41,50 @@ export default function SignUp() {
     }
   }
   return (
-    <section>
-      <h1 className='text-3xl text-center mt-6 font-bold'>Sign Up</h1>
-      <div className='flex justify-center flex-wrap items-center px-6 py-12 max-w-6xl mx-auto'>
-        <div className='md:w-[60%] lg:w-[45%] mb-10 md:mb-5'>
-          <img 
-            src="https://plus.unsplash.com/premium_photo-1661775953246-410e3a33977c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8a2V5fGVufDB8fDB8fHww" 
-            alt="key" 
-            className='w-full rounded'
+    <section className="flex  justify-center flex-wrap items-center min-h-screen">
+      <div className="max-w-md w-full lg:w-[60%] bg-white p-8 rounded-md shadow-lg">
+        <h1 className="text-3xl text-center font-bold mb-6">Sign Up</h1>
+        <img
+          src="https://plus.unsplash.com/premium_photo-1661775953246-410e3a33977c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8a2V5fGVufDB8fDB8fHww"
+          alt="key"
+          className="w-full rounded mb-6"
+        />
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <input
+            type="username"
+            placeholder="username"
+            className="border p-3 rounded-lg"
+            id="username"
+            onChange={handleChange}
           />
-
+          <input
+            type="email"
+            placeholder="Email"
+            className="border p-3 rounded-lg"
+            id="email"
+            onChange={handleChange}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            className="border p-3 rounded-lg"
+            id="password"
+            onChange={handleChange}
+          />
+          <button
+            disabled={loading}
+            className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80"
+          >
+            {loading ? 'Loading...' : 'Sign Up'}
+          </button>
+        </form>
+        <div className="flex gap-2 mt-5">
+          <p>have an account?</p>
+          <Link to={'/sign-in'} className="text-blue-700">
+            Sign in
+          </Link>
         </div>
-        <div className='w-full md:w-[67%] lg:w-[40%] lg:ml-20'>
-        <form  onSubmit={handleSubmit} className='flex flex-col gap-4'>
-        <input
-          type='text'
-          placeholder='username'
-          className='border p-3 rounded-lg'
-          id='username'
-          onChange={handleChange}
-        />
-        <input
-          type='email'
-          placeholder='email'
-          className='border p-3 rounded-lg'
-          id='email'
-          onChange={handleChange}
-
-        />
-        <input
-          type='password'
-          placeholder='password'
-          className='border p-3 rounded-lg'
-          id='password'
-          onChange={handleChange}
-
-        />
-
-        <button
-          disabled={loading}
-          className='bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80'
-        >
-          {loading ? 'Loading...' : 'Sign Up'}
-        </button>
-      </form>
-      <div className='flex gap-2 mt-5'>
-        <p>Have an account?</p>
-        <Link to={'/sign-in'}>
-          <span className='text-blue-700'>Sign in</span>
-        </Link>
-      </div>
-      {error && <p className='text-red-500 mt-5'>{error}</p>}
-
-      </div>
-
+        {error && <p className="text-red-500 mt-5">{error}</p>}
       </div>
     </section>
   )
